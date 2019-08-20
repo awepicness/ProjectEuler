@@ -8,7 +8,6 @@ namespace ProjectEuler
 {
     class Program
     {
-        // last tested answer: 75
         private static int lastProblem = 0;
         private static int run = 0;
         private static void Main()
