@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0CA26E78-B4E9-4A47-9222-A0E17C7607F4}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ProjectEuler</RootNamespace>
+    <AssemblyName>ProjectEuler</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HelperClasses\Card.cs" />
+    <Compile Include="HelperClasses\DisjointSet.cs" />
+    <Compile Include="HelperClasses\Triangle.cs" />
+    <Compile Include="HelperMethods.cs" />
+    <Compile Include="Problems\1-100\1-10\Problem1.cs" />
+    <Compile Include="Problems\1-100\1-10\Problem10.cs" />
+    <Compile Include="Problems\1-100\1-10\Problem2.cs" />
+    <Compile Include="Problems\1-100\1-10\Problem3.cs" />
+    <Compile Include="Problems\1-100\1-10\Problem4.cs" />
+    <Compile Include="Problems\1-100\1-10\Problem5.cs" />
+    <Compile Include="Problems\1-100\1-10\Problem6.cs" />
+    <Compile Include="Problems\1-100\1-10\Problem7.cs" />
+    <Compile Include="Problems\1-100\1-10\Problem8.cs" />
+    <Compile Include="Problems\1-100\1-10\Problem9.cs" />
+    <Compile Include="Problems\1-100\11-20\Problem11.cs" />
+    <Compile Include="Problems\1-100\11-20\Problem12.cs" />
+    <Compile Include="Problems\1-100\11-20\Problem13.cs" />
+    <Compile Include="Problems\1-100\11-20\Problem14.cs" />
+    <Compile Include="Problems\1-100\11-20\Problem15.cs" />
+    <Compile Include="Problems\1-100\11-20\Problem16.cs" />
+    <Compile Include="Problems\1-100\11-20\Problem18.cs" />
+    <Compile Include="Problems\1-100\11-20\Problem19.cs" />
+    <Compile Include="Problems\1-100\11-20\Problem20.cs" />
+    <Compile Include="Problems\1-100\21-30\Problem21.cs" />
+    <Compile Include="Problems\1-100\21-30\Problem22.cs" />
+    <Compile Include="Problems\1-100\21-30\Problem23.cs" />
+    <Compile Include="Problems\1-100\21-30\Problem24.cs" />
+    <Compile Include="Problems\1-100\21-30\Problem25.cs" />
+    <Compile Include="Problems\1-100\21-30\Problem26.cs" />
+    <Compile Include="Problems\1-100\21-30\Problem27.cs" />
+    <Compile Include="Problems\1-100\21-30\Problem28.cs" />
+    <Compile Include="Problems\1-100\21-30\Problem29.cs" />
+    <Compile Include="Problems\1-100\21-30\Problem30.cs" />
+    <Compile Include="Problems\1-100\31-40\Problem31.cs" />
+    <Compile Include="Problems\1-100\31-40\Problem32.cs" />
+    <Compile Include="Problems\1-100\31-40\Problem33.cs" />
+    <Compile Include="Problems\1-100\31-40\Problem34.cs" />
+    <Compile Include="Problems\1-100\31-40\Problem35.cs" />
+    <Compile Include="Problems\1-100\31-40\Problem36.cs" />
+    <Compile Include="Problems\1-100\31-40\Problem37.cs" />
+    <Compile Include="Problems\1-100\31-40\Problem38.cs" />
+    <Compile Include="Problems\1-100\31-40\Problem39.cs" />
+    <Compile Include="Problems\1-100\31-40\Problem40.cs" />
+    <Compile Include="Problems\1-100\41-50\Problem41.cs" />
+    <Compile Include="Problems\1-100\41-50\Problem42.cs" />
+    <Compile Include="Problems\1-100\41-50\Problem43.cs" />
+    <Compile Include="Problems\1-100\41-50\Problem44.cs" />
+    <Compile Include="Problems\1-100\41-50\Problem45.cs" />
+    <Compile Include="Problems\1-100\41-50\Problem46.cs" />
+    <Compile Include="Problems\1-100\41-50\Problem47.cs" />
+    <Compile Include="Problems\1-100\41-50\Problem48.cs" />
+    <Compile Include="Problems\1-100\41-50\Problem49.cs" />
+    <Compile Include="Problems\1-100\41-50\Problem50.cs" />
+    <Compile Include="Problems\1-100\51-60\Problem52.cs" />
+    <Compile Include="Problems\1-100\51-60\Problem53.cs" />
+    <Compile Include="Problems\1-100\51-60\Problem54.cs" />
+    <Compile Include="Problems\1-100\51-60\Problem55.cs" />
+    <Compile Include="Problems\1-100\51-60\Problem56.cs" />
+    <Compile Include="Problems\1-100\51-60\Problem57.cs" />
+    <Compile Include="Problems\1-100\51-60\Problem58.cs" />
+    <Compile Include="Problems\1-100\51-60\Problem59.cs" />
+    <Compile Include="Problems\1-100\51-60\Problem60.cs" />
+    <Compile Include="Problems\1-100\61-70\Problem63.cs" />
+    <Compile Include="Problems\1-100\61-70\Problem67.cs" />
+    <Compile Include="Problems\1-100\61-70\Problem69.cs" />
+    <Compile Include="Problems\1-100\71-80\Problem74.cs" />
+    <Compile Include="Problems\1-100\71-80\Problem75.cs" />
+    <Compile Include="Problems\1-100\71-80\Problem76.cs" />
+    <Compile Include="Problems\1-100\71-80\Problem77.cs" />
+    <Compile Include="Problems\1-100\71-80\Problem78.cs" />
+    <Compile Include="Problems\1-100\71-80\Problem80.cs" />
+    <Compile Include="Problems\1-100\81-90\Problem81.cs" />
+    <Compile Include="Problems\1-100\81-90\Problem87.cs" />
+    <Compile Include="Problems\1-100\81-90\Problem89.cs" />
+    <Compile Include="Problems\1-100\91-100\Problem100.cs" />
+    <Compile Include="Problems\1-100\91-100\Problem92.cs" />
+    <Compile Include="Problems\1-100\91-100\Problem95.cs" />
+    <Compile Include="Problems\1-100\91-100\Problem97.cs" />
+    <Compile Include="Problems\1-100\91-100\Problem99.cs" />
+    <Compile Include="Problems\101-200\101-110\Problem102.cs" />
+    <Compile Include="Problems\101-200\101-110\Problem104.cs" />
+    <Compile Include="Problems\101-200\101-110\Problem107.cs" />
+    <Compile Include="Problems\101-200\111-120\Problem112.cs" />
+    <Compile Include="Problems\101-200\111-120\Problem114.cs" />
+    <Compile Include="Problems\101-200\111-120\Problem119.cs" />
+    <Compile Include="Problems\101-200\111-120\Problem120.cs" />
+    <Compile Include="Problems\101-200\121-130\Problem125.cs" />
+    <Compile Include="Problems\101-200\121-130\Problem128.cs" />
+    <Compile Include="Problems\101-200\121-130\Problem129.cs" />
+    <Compile Include="Problems\101-200\131-140\Problem131.cs" />
+    <Compile Include="Problems\101-200\131-140\Problem132.cs" />
+    <Compile Include="Problems\101-200\131-140\Problem134.cs" />
+    <Compile Include="Problems\101-200\131-140\Problem135.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
