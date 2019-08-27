@@ -6,6 +6,13 @@ using Microsoft.CSharp.RuntimeBinder;
 
 namespace ProjectEuler
 {
+    /// <summary>
+    /// My personal project for solving Project Euler problems, all in one solution and easily runnable
+    /// Type a problem number to run it, or look at the available commands that are printed for alternate options.
+    /// 
+    /// Unfortunately I'm not experienced enough to understand or solve a good amount of the problems.
+    /// When that occurs and I use a solution I found online, I make sure to comment where it was from.
+    /// </summary>
     class Program
     {
         private static int lastProblem = 0;
