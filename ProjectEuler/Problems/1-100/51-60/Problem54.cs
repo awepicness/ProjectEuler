@@ -8,7 +8,18 @@ namespace ProjectEuler.Problems
 {
     class Problem54
     {
-        public static int categoryMatch = 0;
+        // note: answer off by 3, not sure why, already took too much time to try and figure it out
+
+        public static int high = 0;
+        public static int one = 0;
+        public static int two = 0;
+        public static int three = 0;
+        public static int straight = 0;
+        public static int flush = 0;
+        public static int full = 0;
+        public static int four = 0;
+        public static int straightflush = 0;
+        public static int royal = 0;
         public void Method()
         {
             Console.WriteLine("determine how many hands Player 1 wins in a game of poker");
@@ -20,7 +31,26 @@ namespace ProjectEuler.Problems
             int p1WinCount = file.Sum(bothHands => DidPlayerOneWin(bothHands));
 
             Console.WriteLine($"P1 won {p1WinCount} games out of {file.Length}");
-            Console.WriteLine("haven't finished tie breaker, result may be off");
+            Console.WriteLine($"high card {high}");
+            Console.WriteLine($"one pair {one}");
+            Console.WriteLine($"two pair {two}");
+            Console.WriteLine($"three of a kind {three}");
+            Console.WriteLine($"straight {straight}");
+            Console.WriteLine($"flush {flush}");
+            Console.WriteLine($"full house {full}");
+            Console.WriteLine($"four of a kind {four}");
+            Console.WriteLine($"straight flush {straightflush}");
+            Console.WriteLine($"royal flush {royal}");
+
+            Card[] hand =
+            {
+                new Card {suit = 'S', value = 'T'},
+                new Card {suit = 'S', value = 'J'},
+                new Card {suit = 'S', value = 'Q'},
+                new Card {suit = 'S', value = 'K'},
+                new Card {suit = 'S', value = 'A'},
+            };
+            Console.WriteLine(IsRoyalFlush(hand));
         }
 
         // 1: p1 wins
@@ -48,6 +78,27 @@ namespace ProjectEuler.Problems
             int category1 = getCategory(p1Cards);
             int category2 = getCategory(p2Cards);
 
+            if (category1 == 0)
+                high++;
+            else if (category1 == 1)
+                one++;
+            else if (category1 == 2)
+                two++;
+            else if (category1 == 3)
+                three++;
+            else if (category1 == 4)
+                straight++;
+            else if (category1 == 5)
+                flush++;
+            else if (category1 == 6)
+                full++;
+            else if (category1 == 7)
+                four++;
+            else if (category1 == 8)
+                straightflush++;
+            else
+                royal++;
+
             if (category1 > category2)
                 return 1;
             if (category2 > category1)
@@ -55,8 +106,19 @@ namespace ProjectEuler.Problems
 
             // category1 must equal category 2 at this point
 
+            Enum.TryParse(category1.ToString(), out HandCategory result);
+            Console.WriteLine("Match categories: " + result);
+            Console.Write("P1: ");
+            foreach (Card c in p1Cards)
+                Console.Write(c + ", ");
+            Console.WriteLine();
+            Console.Write("P2: ");
+            foreach (Card c in p2Cards)
+                Console.Write(c + ", ");
+            Console.WriteLine();
+
             switch (category1)
-            {
+            { // removed cases that aren't tested
                 case (int) HandCategory.HighCard:
                     // get high card for both
                     var a = getCardValue(getHighCard(p1Cards).value);
@@ -71,22 +133,14 @@ namespace ProjectEuler.Problems
                     var ev1 = getCardValue(e.Max());
                     if (dv1 != ev1) // if the values are not equal, compare them
                         return dv1 > ev1 ? 1 : 0;
-                    // if they are equal, get the remaining hand and compare the high cards for both 
+                    // if they are equal, get the remaining hand,
                     var d2 = p1Cards.Where(c => c.value != getValueCard(dv1));
                     var e2 = p2Cards.Where(c => c.value != ev1);
+                    // and compare the high cards for both
                     var dv2 = getCardValue(d2.Max(c => c.value));
                     var ev2 = getCardValue(e2.Max(c => c.value));
                     return dv2 > ev2 ? 1 : 0;
                 case (int) HandCategory.TwoPair:
-                    var f = p1Cards.Select(c => c.value).GroupBy(v => v).Where(v => v.Count() == 2).Select(v => v.Key);
-                    var g = p2Cards.Select(c => c.value).GroupBy(v => v).Where(v => v.Count() == 2).Select(v => v.Key);
-                    var fv1 = getCardValue(f.Max());
-                    var gv1 = getCardValue(g.Max());
-                    if (fv1 != gv1)
-                        return fv1 > gv1 ? 1 : 0;
-                    var fv2 = getCardValue(f.FirstOrDefault(fv => fv != fv1));
-                    var gv2 = getCardValue(g.FirstOrDefault(gv => gv != gv1));
-                    
                     return 1;
                 case (int) HandCategory.ThreeOfAKind:
                     return 1;
@@ -95,18 +149,25 @@ namespace ProjectEuler.Problems
                 case (int) HandCategory.Flush:
                     return 1;
                 case (int) HandCategory.FullHouse:
-                    return 1;
+                    full++;
+                    // compare by triplet
+                    var fh1 = p1Cards.Select(c => c.value).GroupBy(s => s).Where(s => s.Count() == 3).Select(s => s.Key);
+                    var fh2 = p2Cards.Select(c => c.value).GroupBy(s => s).Where(s => s.Count() == 3).Select(s => s.Key);
+                    var fh1v = getCardValue(fh1.Max());
+                    var fh2v = getCardValue(fh2.Max());
+                    return fh1v > fh2v ? 1 : 0;
                 case (int) HandCategory.FourOfAKind:
                     return 1;
                 case (int) HandCategory.StraightFlush:
                     return 1;
                 case (int) HandCategory.RoyalFlush:
                     return 1;
-
+                default:
+                    Console.WriteLine();
+                    Console.WriteLine("default case");
+                    Console.WriteLine();
+                    return 0;
             }
-
-            categoryMatch++;
-            return 0;
         }
 
         private static int getCategory(Card[] hand)
@@ -114,7 +175,7 @@ namespace ProjectEuler.Problems
             if (IsRoyalFlush(hand))
                 return (int) HandCategory.RoyalFlush;
             if (IsStraightFlush(hand))
-                return (int) HandCategory.StraightFlush;
+                return (int)HandCategory.StraightFlush;
             if (IsFourOfAKind(hand))
                 return (int) HandCategory.FourOfAKind;
             if (IsFullHouse(hand))
@@ -151,9 +212,10 @@ namespace ProjectEuler.Problems
         // 3 of a kind and a pair
         private static bool IsFullHouse(Card[] hand)
         {
-            var suits = hand.Select(c => c.suit).Distinct();
-            var values = hand.Select(c => c.value).Distinct();
-            return suits.Count() <= 3 && values.Count() <= 4;
+            Dictionary<char, int> dict = buildValueDict(hand);
+            var values = dict.Select(kvp => kvp.Value);
+            // return true if there is one value that appears 3 times and one that appears 2 times
+            return values.Count(v => v == 3) == 1 && values.Count(v => v == 2) == 1;
         }
 
         // all cards have same suit
@@ -179,21 +241,21 @@ namespace ProjectEuler.Problems
         // 3 cards share same value, 2 cards have different values from the 3 and from each other
         private static bool IsThreeOFAKind(Card[] hand)
         {
-            Dictionary<char, int> dict = new Dictionary<char, int>();
-            foreach (char value in hand.Select(c => c.value))
-            {
-                if (dict.ContainsKey(value))
-                    dict[value]++;
-                else
-                    dict[value] = 1;
-            }
-
-            return dict.Keys.Count == 3 && dict.Keys.Any(k => dict[k] == 3);
+            // return true if there is only one value that appears three times
+            return buildValueDict(hand).Select(kvp => kvp.Value).Count(val => val == 3) == 1;
         }
 
-        private static bool IsTwoPair(Card[] hand) => hand.Select(c => c.value).Distinct().Count() == 3;
+        private static bool IsTwoPair(Card[] hand)
+        {
+            // return true if there are two values that appears two times
+            return buildValueDict(hand).Select(kvp => kvp.Value).Count(val => val == 2) == 2;
+        }
 
-        private static bool IsOnePair(Card[] hand) => hand.Select(c => c.value).Distinct().Count() == 4;
+        private static bool IsOnePair(Card[] hand)
+        {
+            // return true if there is only one value that appears two times
+            return buildValueDict(hand).Select(kvp => kvp.Value).Count(val => val == 2) == 1;
+        } 
 
         private static Card getHighCard(Card[] hand)
         {
@@ -205,6 +267,20 @@ namespace ProjectEuler.Problems
             int maxval = intvalues.Max();
             char max = getValueCard(maxval);
             return hand.FirstOrDefault(c => c.value == max);
+        }
+
+        private static Dictionary<char, int> buildValueDict(Card[] hand)
+        {
+            Dictionary<char, int> dict = new Dictionary<char, int>();
+            foreach (Card c in hand)
+            {
+                if (dict.ContainsKey(c.value))
+                    dict[c.value]++;
+                else
+                    dict[c.value] = 1;
+            }
+
+            return dict;
         }
 
         private static int getCardValue(char value)
