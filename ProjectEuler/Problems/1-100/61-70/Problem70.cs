@@ -18,7 +18,7 @@ namespace ProjectEuler.Problems
             {
                 double totient = HelperMethods.Phi(i);
 
-                if (i / totient < min && IsPermutation(i.ToString(), totient.ToString()))
+                if (i / totient < min && HelperMethods.IsPermutation(i.ToString(), totient.ToString()))
                 {
                     min = i / totient;
                     minN = i;
@@ -28,20 +28,5 @@ namespace ProjectEuler.Problems
 
             Console.WriteLine($"n={minN}, phi(n)={minTot} minimizes n/phi(n) with a ratio of {min}");
         }
-
-        private bool IsPermutation(string a, string b)
-        {
-            if (a.Length != b.Length)
-                return false;
-            var ac = a.ToCharArray().OrderBy(n => n).ToArray();
-            var bc = b.ToCharArray().OrderBy(n => n).ToArray();
-
-            for(int i = 0; i < ac.Length; i++)
-                if (ac[i] != bc[i])
-                    return false;
-            return true;
-        }
-
-        
     }
 }

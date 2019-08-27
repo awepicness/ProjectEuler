@@ -176,15 +176,16 @@ namespace ProjectEuler
         public static int[] primeFactors(int num)
         {
             int[] primes = ESieve(2, num / 2 + 1);
-            List<int> primeFactors = new List<int>();
-
-            foreach (int prime in primes)
-                if (num % prime == 0)
-                    primeFactors.Add(prime);
-
-            return primeFactors.ToArray();
+            
+            return primeFactors(num, primes);
         }
 
+        /// <summary>
+        /// given a number and an array of primes, finds all prime factors that appear in that array
+        /// </summary>
+        /// <param name="num"></param>
+        /// <param name="primes"></param>
+        /// <returns>an int array of factors of 'num' that appear in 'primes'</returns>
         public static int[] primeFactors(int num, int[] primes)
         {
             List<int> primeFactors = new List<int>();
@@ -222,6 +223,25 @@ namespace ProjectEuler
             if (n > 1)
                 result *= 1.0 - 1.0 / n;
             return result;
+        }
+
+        /// <summary>
+        /// determines if string b is a permutation of string a
+        /// </summary>
+        /// <param name="a">parent string</param>
+        /// <param name="b">permuted string</param>
+        /// <returns>true if b is a permutation of a, otherwise false</returns>
+        public static bool IsPermutation(string a, string b)
+        {
+            if (a.Length != b.Length)
+                return false;
+            var ac = a.ToCharArray().OrderBy(n => n).ToArray();
+            var bc = b.ToCharArray().OrderBy(n => n).ToArray();
+
+            for (int i = 0; i < ac.Length; i++)
+                if (ac[i] != bc[i])
+                    return false;
+            return true;
         }
     }
 
