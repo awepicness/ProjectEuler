@@ -8,16 +8,8 @@ namespace ProjectEuler
 {
     class HelperMethods
     {
-        public static bool IsPrime(int num)
-        {
-            if (num < 2)
-                return false;
-            for (int i = 2; i <= Math.Sqrt(num); i++)
-                if (num % i == 0)
-                    return false;
-            return true;
-        }
-
+        public static bool IsPrime(int num) => IsPrime((long) num);
+        
         public static bool IsPrime(long num)
         {
             if (num < 2)

@@ -40,13 +40,9 @@ namespace ProjectEuler.Problems
             }
 
             for(int i = 1; i < n; i++)
-            {
                 for (int j = 1; j < n; j++)
                     pathMatrix[i, j] = Math.Min(pathMatrix[i - 1, j], pathMatrix[i, j - 1]) + matrix[i][j];
-                
-                Console.WriteLine($"pm[{i},{i}] = {pathMatrix[i,i]}");
-            }
-
+            
             Console.WriteLine($"minimal path sum: {pathMatrix[n-1,n-1]}");
         }
     }

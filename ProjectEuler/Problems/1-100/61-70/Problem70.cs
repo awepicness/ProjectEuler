@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace ProjectEuler.Problems
 {
@@ -11,10 +9,13 @@ namespace ProjectEuler.Problems
             Console.WriteLine(" find the value of n where 1 < n < 10^7 for which Euler's totient function of n (phi(n)) " +
                               "is a permutation of n and the ratio n/phi(n) produces a minimum");
             Console.WriteLine("note: takes a while, but is still within minute time limit");
+
+            const int loopLimit = 10000000;
+
             double min = int.MaxValue;
             int minN = 0;
             double minTot = 0;
-            for (int i = 2; i < Math.Pow(10, 7); i++)
+            for (int i = 2; i < loopLimit; i++)
             {
                 double totient = HelperMethods.Phi(i);
 
