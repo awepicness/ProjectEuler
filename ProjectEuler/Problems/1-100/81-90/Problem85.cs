@@ -11,17 +11,20 @@ namespace ProjectEuler.Problems
 
             // formula: n*m*(n+1)*(m+1)/4 = number of sub-rectangles in an n x m rectangle
 
-            // max value of n^2 / 4 = 2000000 solved for n is 2828.4
-            const int nMax = 2001;
-            const int searchValue = 2000000;
+            // max value of n^2 / 2  * 1 * 2 / 2 = 2000000 solved for n is 2000
+
+            const int maxRectangles = 2000000;
+
+            int nMax = (int) Math.Sqrt(maxRectangles * 2);
+
+            int searchValue = maxRectangles * 4;
 
             int min = int.MaxValue;
             int nMin = 0, mMin = 0, nBymMin = 0;
             for (int n = 1; n < nMax; n++)
-            {
                 for (int m = 1; m <= n; m++)
                 {
-                    int cur = n * m * (n + 1) * (m + 1) / 4;
+                    int cur = n * m * (n + 1) * (m + 1);
                     if (cur > searchValue)
                         break;
 
@@ -34,8 +37,7 @@ namespace ProjectEuler.Problems
                     mMin = m;
                     nBymMin = cur;
                 }
-            }
-            Console.WriteLine($"a(n) {nMin}*{mMin} rectangle has {nBymMin} subs and an area of {nMin * mMin}");
+            Console.WriteLine($"a(n) {nMin}*{mMin} rectangle has {nBymMin/4} subs and an area of {nMin * mMin}");
         }
     }
 }
