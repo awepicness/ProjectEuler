@@ -25,7 +25,7 @@ namespace ProjectEuler.Problems
                     if (cur > searchValue)
                         break;
 
-                    int abs = Math.Abs(searchValue - cur);
+                    int abs = searchValue - cur;
                     if (abs >= min)
                         continue;
 
@@ -35,7 +35,7 @@ namespace ProjectEuler.Problems
                     nBymMin = cur;
                 }
             }
-            Console.WriteLine($"an {nMin}*{mMin} rectangle has {nBymMin} subs and an area of {nMin * mMin}");
+            Console.WriteLine($"a(n) {nMin}*{mMin} rectangle has {nBymMin} subs and an area of {nMin * mMin}");
         }
     }
 }
