@@ -245,6 +245,26 @@ namespace ProjectEuler
                     return false;
             return true;
         }
+
+        /// <summary>
+        /// Generates an n x n grid with the values of Pascal's Triangle
+        /// </summary>
+        /// <param name="n">side length of grid</param>
+        /// <returns></returns>
+        public static long[,] PascalsTriangle(int n)
+        {
+            long[,] grid = new long[n,n];
+            for (int i = 0; i < n; i++)
+            {
+                grid[0, i] = 1;
+                grid[i, i] = 1;
+            }
+
+            for (int i = 1; i < n; i++)
+                for (int j = i; j < n; j++)
+                    grid[i, j] = grid[i, j - 1] + grid[i - 1, j - 1];
+            return grid;
+        }
     }
 
     // potential functions:
