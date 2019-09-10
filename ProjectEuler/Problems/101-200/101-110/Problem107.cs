@@ -15,6 +15,9 @@ namespace ProjectEuler.Problems
             // unfortunately, I haven't learned anything about forests and minimizing undirected graphs yet
             // so this fell into the "I don't know where to start" problems 
 
+            // update 9/10/2019 - I get it now, this is just the minimum spanning tree problem
+            // I think this follows floyd-warshalls algo - get all edges, sort by weight, and take each edge as long as a cycle is not produced
+
             // thank you mathblog.dk
 
             // read input file
