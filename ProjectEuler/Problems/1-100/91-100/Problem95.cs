@@ -60,9 +60,9 @@ namespace ProjectEuler.Problems
                     }
                 }
 
-                for (int j = 0; j < chain.Count; j++)
+                foreach (int j in chain)
                 {
-                    numbers[chain[j]] = true;
+                    numbers[j] = true;
                 }
 
             }

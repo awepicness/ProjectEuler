@@ -20,6 +20,16 @@ namespace ProjectEuler
             return true;
         }
 
+        public static bool IsPrime(decimal num)
+        {
+            if (num < 2)
+                return false;
+            for (int i = 2; i <= Math.Sqrt((int)(num + 1)); i++)
+                if (num % i == 0)
+                    return false;
+            return true;
+        }
+
         public static bool IsPalindrome(string input)
         {
             for (int i = 0; i < input.Length; i++)

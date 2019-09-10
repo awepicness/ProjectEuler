@@ -40,9 +40,8 @@ namespace ProjectEuler
         {
             for (decimal i = Math.Ceiling(HelperMethods.DecimalSqrt(num)); i > 0; i--)
             {
-                if (num % i == 0)
-                    if (IsPrime(i))
-                        return i;
+                if (num % i == 0 && HelperMethods.IsPrime(i))
+                    return i;
             }
 
             return 0;
