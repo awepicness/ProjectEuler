@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectEuler.Problems
 {
@@ -11,6 +8,11 @@ namespace ProjectEuler.Problems
     {
         public void Method()
         {
+            Console.WriteLine("Find the sum of the only ordered set of six 4-digit numbers for which " +
+                              "each polygonal type: triangle, square, pentagonal, hexagonal, heptagonal, and octagonal, " +
+                              "is represented by a different number in the set, and the last 2 digits of each number " +
+                              "matches the first 2 digits of the next number (including the last and the first numbers)\n");
+
             HashSet<Tuple<string, char>> figurates = BuildFigurates();
             foreach (var a in figurates)
             {
@@ -39,22 +41,17 @@ namespace ProjectEuler.Problems
 
                                 foreach (var f in eMatches)
                                 {
-                                    if (getSub(f) == a.Item1.Substring(0, 2))
-                                    {
-                                        var sum = int.Parse(a.Item1) + int.Parse(b.Item1)
-                                                                     + int.Parse(c.Item1) + int.Parse(d.Item1)
-                                                                     + int.Parse(e.Item1) + int.Parse(f.Item1);
+                                    if (getSub(f) != a.Item1.Substring(0, 2))
+                                        continue;
 
-                                        Console.WriteLine("match");
-                                        Console.WriteLine($"{a.Item1} : {getCharString(a.Item2)}");
-                                        Console.WriteLine($"{b.Item1} : {getCharString(b.Item2)}");
-                                        Console.WriteLine($"{c.Item1} : {getCharString(c.Item2)}");
-                                        Console.WriteLine($"{d.Item1} : {getCharString(d.Item2)}");
-                                        Console.WriteLine($"{e.Item1} : {getCharString(e.Item2)}");
-                                        Console.WriteLine($"{f.Item1} : {getCharString(f.Item2)}");
-                                        Console.WriteLine($"sum: {sum}");
-                                        return;
-                                    }
+                                    var sum = int.Parse(a.Item1) + int.Parse(b.Item1) + int.Parse(c.Item1) 
+                                            + int.Parse(d.Item1) + int.Parse(e.Item1) + int.Parse(f.Item1);
+
+                                    List<Tuple<string, char>> matches = new List<Tuple<string, char>>{a, b, c, d, e, f};
+                                    foreach(var m in matches)
+                                        Console.WriteLine($"{m.Item1} : {getCharString(m.Item2)}");
+                                    Console.WriteLine($"sum: {sum}");
+                                    return;
                                 }
                             }
                         }
@@ -98,27 +95,27 @@ namespace ProjectEuler.Problems
                 var h = i * (5 * i - 3) / 2;
                 var o = i * (3 * i - 2);
 
-                if (o < 1000)
+                if (o < 1000) // o always has the max value
                     continue;
 
-                if (t > 10000)
+                if (t > 10000) // t always has the min value
                     break;
 
-                if (t >= 1000 && t < 10000)
-                    figurates.Add(new Tuple<string, char>(t.ToString(), 'T'));
-                if (s >= 1000 && s < 10000)
-                    figurates.Add(new Tuple<string, char>(s.ToString(), 'S'));
-                if (p >= 1000 && p < 10000)
-                    figurates.Add(new Tuple<string, char>(p.ToString(), 'P'));
-                if (x >= 1000 && x < 10000)
-                    figurates.Add(new Tuple<string, char>(x.ToString(), 'X'));
-                if (h >= 1000 && h < 10000)
-                    figurates.Add(new Tuple<string, char>(h.ToString(), 'H'));
-                if (o >= 1000 && o < 10000)
-                    figurates.Add(new Tuple<string, char>(o.ToString(), 'O'));
+                AddTuple(ref figurates, t, 'T');
+                AddTuple(ref figurates, s, 'S');
+                AddTuple(ref figurates, p, 'P');
+                AddTuple(ref figurates, x, 'X');
+                AddTuple(ref figurates, h, 'H');
+                AddTuple(ref figurates, o, 'O');
             }
 
             return figurates;
+        }
+
+        private void AddTuple(ref HashSet<Tuple<string, char>> figurates, int value, char type)
+        {
+            if (value >= 1000 && value < 10000)
+                figurates.Add(new Tuple<string, char>(value.ToString(), type));
         }
     }
 }
