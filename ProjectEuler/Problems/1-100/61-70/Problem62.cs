@@ -1,73 +1,72 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using System.Text;
 
 namespace ProjectEuler.Problems
 {
     class Problem62
     {
-        private HashSet<long> cubePermutations;
-        public void Method2()
+        public void Method()
         {
-            // doesn't work: takes forever to get to answer (5027)
-            // but it has an error before it ever gets there
-            // guess I'll die :)
-
             Console.WriteLine("find the smallest cube for which exactly five permutations of its digits are cube");
 
-            const int permLimit = 5;
+            // arbitary - cube root of max int value
+            const int cubeLimit = 8500;
+            const int permutationMatches = 5;
 
-            int baseNumber = 5026;
-            List<long> cubePerms = new List<long>();
-            while (true)
+            // generate cubes, convert them to strings 
+            BigInteger[] cubes = new BigInteger[cubeLimit];
+            string[] cubeStrings = new string[cubeLimit];
+            for (int i = 0; i < cubeLimit; i++)
             {
-                cubePermutations = new HashSet<long>();
-                cubePerms = new List<long>();
-
-                long cube = baseNumber * baseNumber * baseNumber;
-                string cubeString = cube.ToString();
-                int n = cubeString.Length;
-                int[] cubeDigits = new int[n];
-                for (int i = 0; i < n; i++)
-                    cubeDigits[i] = cubeString[i] - '0';
-
-                GeneratePermutations(cubeDigits, n, n);
-
-                int cubeCount = 0;
-                foreach (long p in cubePermutations)
-                {
-                    if (cubeCount > permLimit)
-                        break;
-                    var cuberoot = Math.Pow(p, (1.0 / 3.0));
-                    if (Math.Abs(cuberoot % 1) > 0.00001)
-                    {
-                        cubeCount++;
-                        cubePerms.Add((long)cuberoot);
-                    }
-                }
-
-                if (cubeCount == permLimit)
-                    break;
-
-                baseNumber++;
+                cubes[i] = BigInteger.Pow(i, 3);
+                string c = ConvertInt(cubes[i]);
+                cubeStrings[i] = c;
             }
 
-            Console.WriteLine($"smallest cube with {permLimit} permutations is {baseNumber}^3 = {baseNumber*baseNumber*baseNumber}");
+            // find smallest cube for which 4 other cubes share the same string representation
+            // this works because permutations have the same string representation
+            int j;
+            bool found = false;
+            for(j = 0; j < cubeLimit; j++)
+            {
+                int count = cubeStrings.Count(s => s == cubeStrings[j]);
+                if (count != permutationMatches)
+                    continue;
+                found = true;
+                break;
+            }
+
+            Console.WriteLine(found
+                ? $"{j}^3 = {BigInteger.Pow(j, 3)} is the smallest cube that can be permuted to {permutationMatches} other cubes"
+                : "cube not found");
         }
 
-        private void GeneratePermutations(int[] digits, int size, int n)
+        /// <summary>
+        /// Converts an integer to a string where each digit is in numerical order in the string
+        /// and each digit is prefixed by its number of occurrences
+        /// ex: 55233 -> 122325 (one 2, two 3s, three 5s)
+        /// </summary>
+        /// <param name="n">integer to be converted</param>
+        /// <returns></returns>
+        private string ConvertInt(BigInteger n)
         {
-            if (size == 1)
-                cubePermutations.Add(long.Parse(string.Join("", digits)));
-            for (int i = 0; i < size; i++)
+            Dictionary<int, int> charCount = new Dictionary<int, int>();
+            foreach (char c in n.ToString())
             {
-                GeneratePermutations(digits, size-1, n);
-
-                int index = size % 2 == 1 ? 0 : i;
-                
-                int temp = digits[index];
-                digits[index] = digits[size - 1];
-                digits[size - 1] = temp;
+                int cu = c - '0';
+                if (charCount.ContainsKey(cu))
+                    charCount[cu]++;
+                else
+                    charCount[cu] = 1;
             }
+
+            StringBuilder res = new StringBuilder();
+            foreach (KeyValuePair<int, int> kvp in charCount.OrderBy(k => k.Key))
+                res.Append($"{kvp.Value}{kvp.Key}");
+            return res.ToString();
         }
     }
 }
