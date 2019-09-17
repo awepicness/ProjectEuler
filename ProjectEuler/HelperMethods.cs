@@ -134,6 +134,15 @@ namespace ProjectEuler
             return current;
         }
 
+        public static BigInteger BigIntegerPow(BigInteger a, BigInteger b)
+        {
+            if (b == 0)
+                return 1;
+            if (b % 2 == 0)
+                return BigIntegerPow(a, b / 2) * BigIntegerPow(a, b / 2);
+            return a * BigIntegerPow(a, b / 2) * BigIntegerPow(a, b / 2);
+        }
+
         // thank you mathblog.dk
         public static BigInteger Sqrt(int n, int digits)
         {
