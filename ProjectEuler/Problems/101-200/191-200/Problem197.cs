@@ -14,11 +14,11 @@ namespace ProjectEuler.Problems
         {
             Console.WriteLine("Given the recursive function f(x) (coded below), find u[n] + u[n+1] for n = 10^12");
 
-            // I don't understand it completely, but originally made a dictionary and noticed the 
+            // I don't understand it completely, but originally made a dictionary of repeated values and noticed the 
             // values when i was a factor of 1001 alternated between 2 values, as if the function made a loop.
             // so I just added those values and got the right answer
 
-            double u = -1.0; // u[0] = -1
+            double u = -1.0;
             double sum = 0.0;
             for(long i = 1; i <= 2002; i++)
             {
@@ -31,6 +31,5 @@ namespace ProjectEuler.Problems
         }
 
         private double func(double x) => Math.Floor(Math.Pow(2, twoPow - x * x)) * tenPow;
-        
     }
 }
