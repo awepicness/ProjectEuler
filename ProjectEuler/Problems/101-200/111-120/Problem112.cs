@@ -18,28 +18,10 @@ namespace ProjectEuler.Problems
             while (100*bouncyCount/n < percent)
             {
                 n++;
-                if (IsBouncy(n))
+                if (HelperMethods.IsBouncy(n))
                     bouncyCount++;
             }
             Console.WriteLine($"{percent}% numbers less than {n} are bouncy");
-        }
-
-        private static bool IsBouncy(double num)
-        {
-            int upCount = 0;
-            int downCount = 0;
-            string numString = num.ToString();
-            for (int i = 0; i < numString.Length - 1; i++)
-            {
-                if (numString[i] > numString[i + 1])
-                    upCount++;
-                else if (numString[i] < numString[i + 1])
-                    downCount++;
-
-                if (upCount > 0 && downCount > 0)
-                    return true;
-            }
-            return false;
         }
     }
 }

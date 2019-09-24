@@ -192,10 +192,9 @@ namespace ProjectEuler
         {
             List<int> primeFactors = new List<int>();
 
-            int primeLimit = num / 2 + 1;
             for (int i = 0; i < primes.Length; i++)
             {
-                if (primes[i] > primeLimit)
+                if (primes[i] > num)
                     break;
                 if (num % primes[i] == 0)
                     primeFactors.Add(primes[i]);
@@ -264,6 +263,30 @@ namespace ProjectEuler
                 for (int j = i; j < n; j++)
                     grid[i, j] = grid[i, j - 1] + grid[i - 1, j - 1];
             return grid;
+        }
+
+        /// <summary>
+        /// Determine if a given number is bouncy - its digits are in neither
+        /// ascending nor descending order overall
+        /// </summary>
+        /// <param name="num"></param>
+        /// <returns></returns>
+        public static bool IsBouncy(double num)
+        {
+            int upCount = 0;
+            int downCount = 0;
+            string numString = num.ToString();
+            for (int i = 0; i < numString.Length - 1; i++)
+            {
+                if (numString[i] > numString[i + 1])
+                    upCount++;
+                else if (numString[i] < numString[i + 1])
+                    downCount++;
+
+                if (upCount > 0 && downCount > 0)
+                    return true;
+            }
+            return false;
         }
     }
 
