@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="HelperClasses\Card.cs" />
     <Compile Include="HelperClasses\DisjointSet.cs" />
+    <Compile Include="HelperClasses\Sudoku.cs" />
     <Compile Include="HelperClasses\Triangle.cs" />
     <Compile Include="HelperMethods.cs" />
     <Compile Include="Problems\1-100\1-10\Problem1.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="Problems\1-100\91-100\Problem91.cs" />
     <Compile Include="Problems\1-100\91-100\Problem92.cs" />
     <Compile Include="Problems\1-100\91-100\Problem95.cs" />
+    <Compile Include="Problems\1-100\91-100\Problem96.cs" />
     <Compile Include="Problems\1-100\91-100\Problem97.cs" />
     <Compile Include="Problems\1-100\91-100\Problem99.cs" />
     <Compile Include="Problems\101-200\101-110\Problem102.cs" />
