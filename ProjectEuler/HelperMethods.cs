@@ -160,14 +160,18 @@ namespace ProjectEuler
             return b / 100;
         }
 
+        public static int[] GetDivisors(int n)
+        {
+            List<int> divisors = new List<int>();
+            for(int i = 1; i <= Math.Ceiling(Math.Sqrt(n)); i++)
+                if(n % i == 0)
+                    divisors.Add(i);
+            return divisors.ToArray();
+        }
+
         public static int SumDivisors(int num)
         {
-            int sum = 0;
-            for (int i = 1; i <= num / 2; i++)
-                if (num % i == 0)
-                    sum += i;
-
-            return sum;
+            return GetDivisors(num).Sum();
         }
 
         /// <summary>
