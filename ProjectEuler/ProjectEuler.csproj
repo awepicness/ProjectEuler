@@ -147,13 +147,13 @@
     <Compile Include="Problems\101-200\121-130\Problem125.cs" />
     <Compile Include="Problems\101-200\121-130\Problem128.cs" />
     <Compile Include="Problems\101-200\121-130\Problem129.cs" />
-    <Compile Include="Problems\101-200\131-140\Problem131.cs" />
     <Compile Include="Problems\101-200\131-140\Problem132.cs" />
     <Compile Include="Problems\101-200\131-140\Problem134.cs" />
     <Compile Include="Problems\101-200\131-140\Problem135.cs" />
     <Compile Include="Problems\101-200\181-190\Problem188.cs" />
     <Compile Include="Problems\101-200\191-200\Problem197.cs" />
     <Compile Include="Problems\201-300\201-210\Problem203.cs" />
+    <Compile Include="Problems\201-300\201-210\Problem206.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -2,7 +2,7 @@
 {
     class Problem132
     {
-        public void Method()
+        public void Method2()
         {
 
         }
