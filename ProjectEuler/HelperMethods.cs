@@ -66,6 +66,8 @@ namespace ProjectEuler
             return digits == (1 << count) - 1;
         }
 
+        public static int[] ESieve(int upperLimit) => ESieve(2, upperLimit);
+
         // thank you mathblog.dk
         public static int[] ESieve(int lowerLimit, int upperLimit)
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,10 +13,10 @@ namespace ProjectEuler.Problems
         {
             Console.WriteLine("find the sum of the first 4 engineers' paradises");
             // first: practical numbers
-            // a practical number is a number n for which all divisors of n can be written as 
+            // a practical number is a number n for which all numbers 1 - n can be written as 
             // a sum of distinct divisors of n
             // ex: 6 has divisors 1, 2, 3, 6
-            //     1 = 1, 2 = 2, 3 = 1 + 2, 4 = 1 + 3, and 6 = 6
+            //     1 = 1, 2 = 2, 3 = 1 + 2, 4 = 1 + 3, 5 = 2 + 3, and 6 = 6
 
             // second: sexy pairs
             // two numbers x and y form a sexy pair if x and y are prime and y - x = 6
@@ -30,7 +31,7 @@ namespace ProjectEuler.Problems
             const int engParadiseLim = 4;
 
             // generate primes to an arbitrary limit 
-            int[] primes = HelperMethods.ESieve(2, uLim);
+            int[] primes = HelperMethods.ESieve(uLim);
 
             List<Tuple<int, int>> sexyPairs = new List<Tuple<int, int>>();
             for (int i = 0; i < primes.Length - 1; i++)
@@ -48,7 +49,7 @@ namespace ProjectEuler.Problems
                     tripleSexyPairs.Add(new Tuple<int, int>(sexyPairs[i].Item1, sexyPairs[i + 2].Item2));
                 }
             }
-
+            
             List<int> engParadises = new List<int>();
             int count = 0;
             foreach (var t in tripleSexyPairs)
