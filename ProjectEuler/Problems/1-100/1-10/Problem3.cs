@@ -9,18 +9,18 @@ namespace ProjectEuler
         {
             Console.WriteLine("Find Largest Prime Factor of 600851475143 ");
 
-            const decimal input = 600851475143;
+            long input = 600851475143;
 
-            decimal largest = FindLargestPrimeFactor(input);
+            long largest = FindLargestPrimeFactor(input);
 
             Console.WriteLine($"The largest prime factor of {input} is {largest}");
             Console.WriteLine();
 
-            List<decimal> allPrimeFactors = FindAllPrimeFactors(input);
+            //List<decimal> allPrimeFactors = FindAllPrimeFactors(input);
 
-            Console.WriteLine($"all prime factors of {input}:");
-            foreach (decimal i in allPrimeFactors)
-                Console.Write($"{i} ");
+            //Console.WriteLine($"all prime factors of {input}:");
+            //foreach (decimal i in allPrimeFactors)
+            //    Console.Write($"{i} ");
 
             Console.WriteLine();
         }
@@ -36,9 +36,9 @@ namespace ProjectEuler
             return true;
         }
 
-        private static decimal FindLargestPrimeFactor(decimal num)
+        private static long FindLargestPrimeFactor(long num)
         {
-            for (decimal i = Math.Ceiling(HelperMethods.DecimalSqrt(num)); i > 0; i--)
+            for (long i = (long) Math.Ceiling(Math.Sqrt(num)); i > 0; i--)
             {
                 if (num % i == 0 && HelperMethods.IsPrime(i))
                     return i;

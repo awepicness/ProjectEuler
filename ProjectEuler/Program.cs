@@ -22,7 +22,7 @@ namespace ProjectEuler
             if (run == 0)
                 lastProblem = findLastProblem();
             bool nerd = false;
-            Console.WriteLine("Hello! This is program runs any ProjectEuler problem that I've completed.");
+            Console.WriteLine("Hello! This program runs any ProjectEuler problem that I've completed.");
             while (true)
             {
                 Console.WriteLine("Would you like to run a problem? type a problem number to run it.");

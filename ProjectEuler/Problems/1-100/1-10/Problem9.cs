@@ -12,14 +12,17 @@ namespace ProjectEuler.Problems
             int loopLimit = 1000;
             for (int i = 0; i < loopLimit; i++)
                 for (int j = i + 1; j < loopLimit; j++)
-                    for (int k = j + 1; k < loopLimit; k++)
-                        if (i + j + k == 1000)
-                            if (i * i + j * j == k * k)
-                            {
-                                a = i;
-                                b = j;
-                                c = k;
-                            }
+                    if (i + j < 1000)
+                    {
+                        int k = 1000 - i - j;
+                        if (i * i + j * j == k * k)
+                        {
+                            a = i;
+                            b = j;
+                            c = k;
+                        }
+                    }
+                            
 
             Console.WriteLine($"a = {a}, b = {b}, c = {c}");
             Console.WriteLine($"{a}^2 + {b}^2 = {c}^2");
