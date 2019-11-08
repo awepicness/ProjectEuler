@@ -164,10 +164,15 @@ namespace ProjectEuler
 
         public static int[] GetDivisors(int n)
         {
-            List<int> divisors = new List<int>();
-            for(int i = 1; i <= Math.Ceiling(Math.Sqrt(n)); i++)
-                if(n % i == 0)
+            if (n < 1)
+                return new[] { 0 };
+            List<int> divisors = new List<int> {1};
+            for(int i = 2; i <= Math.Ceiling(Math.Sqrt(n)); i++)
+                if (n % i == 0)
+                {
                     divisors.Add(i);
+                    divisors.Add(n / i);
+                }
             return divisors.ToArray();
         }
 
