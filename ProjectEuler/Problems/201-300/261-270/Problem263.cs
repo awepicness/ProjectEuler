@@ -12,10 +12,10 @@ namespace ProjectEuler.Problems
         {
             Console.WriteLine("find the sum of the first 4 engineers' paradises");
             // first: practical numbers
-            // a practical number is a number n for which all divisors of n can be written as 
+            // a practical number is a number n for which all numbers 1 through n can be  
             // a sum of distinct divisors of n
             // ex: 6 has divisors 1, 2, 3, 6
-            //     1 = 1, 2 = 2, 3 = 1 + 2, 4 = 1 + 3, and 6 = 6
+            //     1 = 1, 2 = 2, 3 = 1 + 2, 4 = 1 + 3, 5 = 2 + 3 and 6 = 6
 
             // second: sexy pairs
             // two numbers x and y form a sexy pair if x and y are prime and y - x = 6
@@ -26,7 +26,7 @@ namespace ProjectEuler.Problems
             //     n-9, n-3, n+3, and n+9 are all prime
             //     n-8, n-4, n, n+4, and n+8 are all practical
 
-            const int uLim = 100_000_000;
+            const int uLim = 100_000_0;
             const int engParadiseLim = 4;
 
             // generate primes to an arbitrary limit 
@@ -104,12 +104,10 @@ namespace ProjectEuler.Problems
 
             int[] divisors = HelperMethods.GetDivisors(n);
 
-            foreach (int d in divisors)
+            for(int i = 3; i <= n; i++)
             {
-                if (d < 3) continue;
                 // subset sum problem
-                int[] divisorExceptD = divisors.Where(x => x != d).ToArray();
-                if (!IsSubsetSum(divisorExceptD, divisorExceptD.Length, d))
+                if (!IsSubsetSum(divisors, divisors.Length, i))
                     return false;
             }
 
