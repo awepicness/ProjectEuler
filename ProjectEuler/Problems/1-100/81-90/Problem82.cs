@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -33,6 +34,9 @@ namespace ProjectEuler.Problems
                 matrix[i] = Array.ConvertAll(stringMatrix[i], int.Parse);
 
             // solve
+            int min = int.MaxValue;
+
         }
     }
+
 }
