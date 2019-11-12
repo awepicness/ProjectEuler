@@ -24,12 +24,12 @@ namespace ProjectEuler.Problems
 
         private static int IsDivisible(int num)
         {
-            int totalDivisors = 1; // a number is always divisible by 1
+            int totalDivisors = 2; // a number is always divisible by 1 and itself
             for (int i = 2; i <= Math.Sqrt(num); i++)
                 if (num % i == 0)
-                    totalDivisors++; 
+                    totalDivisors += 2; 
             
-            return totalDivisors * 2;
+            return totalDivisors;
         }
     }
 }

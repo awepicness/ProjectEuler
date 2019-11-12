@@ -12,7 +12,7 @@ namespace ProjectEuler.Problems
             // could go past the int max value, heck
 
             double maxNumber = 0, maxChain = 0;
-            for (double number = 1; number < 1000000; number++)
+            for (double number = 1; number < 1000000; number += 2)
             {
                 double chain = Collatz(number);
                 if (chain > maxChain)

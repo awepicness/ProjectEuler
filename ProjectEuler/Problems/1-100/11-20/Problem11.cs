@@ -40,7 +40,7 @@ namespace ProjectEuler.Problems
 
                         if (j - 3 >= 0)
                         {
-                            int diag = matrix[i][j] * matrix[i + 1][j - 1] * matrix[i + 1][j - 2] * matrix[i + 3][j - 3];
+                            int diag = matrix[i][j] * matrix[i + 1][j - 1] * matrix[i + 2][j - 2] * matrix[i + 3][j - 3];
                             if (diag > max)
                                 max = diag;
                         }
