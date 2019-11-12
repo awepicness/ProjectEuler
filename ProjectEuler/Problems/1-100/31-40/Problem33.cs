@@ -56,7 +56,7 @@ namespace ProjectEuler.Problems
             }
 
             Console.WriteLine($"{count} nums found, product: {product}");
-            Console.WriteLine("not gonna take the time to write an algo to find denom of product, it's just 100");
+            Console.WriteLine($"denom of product = {1 / product}");
         }
     }
 }
