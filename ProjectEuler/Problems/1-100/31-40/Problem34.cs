@@ -13,7 +13,7 @@ namespace ProjectEuler.Problems
             // start loop at 3 - per problem description, 1 and 2 are not included
 
             int sum = 0;
-            for (int i = 3; i < 1000000; i++)
+            for (int i = 3; i < 100000; i++)
             {
                 int currSum = 0;
                 foreach (char c in i.ToString())

@@ -13,12 +13,12 @@ namespace ProjectEuler.Problems
 
             int limit = 1000000;
 
+            int[] primes = HelperMethods.ESieve(2, limit);
             List<int> circularPrimes = new List<int>();
-            for (int i = 1; i < limit; i++)
+            foreach(int p in primes)
             {
-                if (HelperMethods.IsPrime(i))
-                    if (IsCircularPrime(i.ToString(), i.ToString()))
-                        circularPrimes.Add(i);
+                if (IsCircularPrime(p.ToString(), p.ToString()))
+                    circularPrimes.Add(p);
             }
 
             Console.WriteLine($"There are {circularPrimes.Count} circular primes less than {limit}");
