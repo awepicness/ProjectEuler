@@ -19,11 +19,13 @@ namespace ProjectEuler.Problems
             // time: 450-500 ms
             const int limit = 1000000;
 
+            // ignore single digit primes (2 3 5 7)
+            int[] primes = HelperMethods.ESieve(11, limit);
             List<int> truncatablePrimes = new List<int>();
 
-            for (int i = 8; i < limit; i++) // ignore 2 3 5 7, so start at 8
-                if (TruncatePrime(i))
-                    truncatablePrimes.Add(i);
+            foreach(int p in primes) 
+                if (TruncatePrime(p))
+                    truncatablePrimes.Add(p);
             
             Console.WriteLine($"There are {truncatablePrimes.Count} truncatable primes less than {limit}");
             if (printOutput)
@@ -39,34 +41,29 @@ namespace ProjectEuler.Problems
         private static bool TruncatePrime(int num)
         {
             // check if number is prime
-            if (HelperMethods.IsPrime(num))
+            string numString = num.ToString();
+
+            StringBuilder truncateLeft = new StringBuilder(numString.Substring(1));
+            StringBuilder truncateRight = new StringBuilder(numString.Substring(0, numString.Length - 1));
+
+            // truncate number from left to right and right to left
+            // if any truncation is not prime, return false
+            while (truncateLeft.Length > 0)
             {
-                string numString = num.ToString();
-
-                StringBuilder truncateLeft = new StringBuilder(numString.Substring(1));
-                StringBuilder truncateRight = new StringBuilder(numString.Substring(0, numString.Length - 1));
-
-                // truncate number from left to right and right to left
-                // if any truncation is not prime, return false
-                while (truncateLeft.Length > 0)
-                {
-                    if (!HelperMethods.IsPrime(int.Parse(truncateLeft.ToString())))
-                        return false;
-                    truncateLeft.Remove(0, 1);
-                }
-
-                while (truncateRight.Length > 0)
-                {
-                    if (!HelperMethods.IsPrime(int.Parse(truncateRight.ToString())))
-                        return false;
-                    truncateRight.Remove(truncateRight.Length - 1, 1);
-                }
-
-                // if the number and every truncation ltr and rtl are prime, return true
-                return true;
+                if (!HelperMethods.IsPrime(int.Parse(truncateLeft.ToString())))
+                    return false;
+                truncateLeft.Remove(0, 1);
             }
 
-            return false;
+            while (truncateRight.Length > 0)
+            {
+                if (!HelperMethods.IsPrime(int.Parse(truncateRight.ToString())))
+                    return false;
+                truncateRight.Remove(truncateRight.Length - 1, 1);
+            }
+
+            // if the number and every truncation ltr and rtl are prime, return true
+            return true;
         }
     }
 }
