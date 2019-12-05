@@ -167,7 +167,7 @@ namespace ProjectEuler
             if (n < 1)
                 return new[] { 0 };
             List<int> divisors = new List<int> {1};
-            for(int i = 2; i <= Math.Ceiling(Math.Sqrt(n)); i++)
+            for(int i = 2; i <= Math.Sqrt(n); i++)
                 if (n % i == 0)
                 {
                     divisors.Add(i);
