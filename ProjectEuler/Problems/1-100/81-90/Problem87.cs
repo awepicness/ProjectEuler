@@ -17,8 +17,8 @@ namespace ProjectEuler.Problems
 
             // wow i did it myself without help!
 
-            const int primeLimit = 7071;
             const int resultLimit = 50000000;
+            int primeLimit = (int) Math.Sqrt(resultLimit);
 
             int[] primes = HelperMethods.ESieve(2, primeLimit);
             long[] squares = new long[primes.Length];
@@ -55,7 +55,7 @@ namespace ProjectEuler.Problems
                 }
             }
 
-            Console.WriteLine($"There are {results.Count} numbers below {resultLimit} than can be expressed as the sum of a prime square, cube, and fourth power");
+            Console.WriteLine($"There are {results.Count} numbers below {resultLimit} that can be expressed as the sum of a prime square, cube, and fourth power");
         }
     }
 }

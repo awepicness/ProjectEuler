@@ -78,15 +78,9 @@ namespace ProjectEuler
             BitArray PrimeBits = new BitArray(sieveBound + 1, true);
 
             for (int i = 1; i <= upperSqrt; i++)
-            {
                 if (PrimeBits.Get(i))
-                {
                     for (int j = i * 2 * (i + 1); j <= sieveBound; j += 2 * i + 1)
-                    {
                         PrimeBits.Set(j, false);
-                    }
-                }
-            }
 
             List<int> numbers = new List<int>((int)(upperLimit / (Math.Log(upperLimit) - 1.08366)));
 
@@ -97,12 +91,8 @@ namespace ProjectEuler
             }
 
             for (int i = (lowerLimit - 1) / 2; i <= sieveBound; i++)
-            {
                 if (PrimeBits.Get(i))
-                {
                     numbers.Add(2 * i + 1);
-                }
-            }
 
             return numbers.ToArray();
         }
@@ -152,10 +142,8 @@ namespace ProjectEuler
                 }
                 else
                 {
-                    {
-                        a *= 100;
-                        b = (b / 10) * 100 + 5;
-                    }
+                    a *= 100;
+                    b = (b / 10) * 100 + 5;
                 }
             }
 
@@ -250,10 +238,7 @@ namespace ProjectEuler
             var ac = a.ToCharArray().OrderBy(n => n).ToArray();
             var bc = b.ToCharArray().OrderBy(n => n).ToArray();
 
-            for (int i = 0; i < ac.Length; i++)
-                if (ac[i] != bc[i])
-                    return false;
-            return true;
+            return !ac.Where((t, i) => t != bc[i]).Any();
         }
 
         /// <summary>
