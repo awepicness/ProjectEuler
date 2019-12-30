@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ProjectEuler.Problems
 {
@@ -28,8 +29,8 @@ namespace ProjectEuler.Problems
             for (int i = 0; i < primes.Length; i++)
             {
                 squares[i] = primes[i] * primes[i];
-                cubes[i] = primes[i] * primes[i] * primes[i];
-                tesseracts[i] = primes[i] * primes[i] * primes[i] * primes[i];
+                cubes[i] = squares[i] * primes[i];
+                tesseracts[i] = cubes[i] * primes[i];
             }
 
             // make a place to store results
@@ -47,10 +48,9 @@ namespace ProjectEuler.Problems
                     foreach (long square in squares)
                     {
                         long result = square + cube + tes;
-                        if (result < resultLimit)
-                            results.Add(result);
-                        else
+                        if (result >= resultLimit)
                             break;
+                        results.Add(result);
                     }
                 }
             }

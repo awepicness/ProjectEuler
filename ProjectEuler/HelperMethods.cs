@@ -235,8 +235,8 @@ namespace ProjectEuler
         {
             if (a.Length != b.Length)
                 return false;
-            var ac = a.ToCharArray().OrderBy(n => n).ToArray();
-            var bc = b.ToCharArray().OrderBy(n => n).ToArray();
+            var ac = a.ToArray().OrderBy(n => n).ToArray();
+            var bc = b.ToArray().OrderBy(n => n).ToArray();
 
             return !ac.Where((t, i) => t != bc[i]).Any();
         }
