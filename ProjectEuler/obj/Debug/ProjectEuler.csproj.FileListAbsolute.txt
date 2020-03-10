@@ -9,7 +9,6 @@ C:\Users\eweber01\Source\Repos\ProjectEuler\ProjectEuler\bin\Debug\ProjectEuler.
 C:\Users\eweber01\Source\Repos\ProjectEuler\ProjectEuler\bin\Debug\ProjectEuler.exe
 C:\Users\eweber01\Source\Repos\ProjectEuler\ProjectEuler\bin\Debug\ProjectEuler.pdb
 C:\Users\eweber01\Source\Repos\ProjectEuler\ProjectEuler\obj\Debug\ProjectEuler.csprojAssemblyReference.cache
-C:\Users\eweber01\Source\Repos\ProjectEuler\ProjectEuler\obj\Debug\ProjectEuler.csproj.CoreCompileInputs.cache
 C:\Users\eweber01\Source\Repos\ProjectEuler\ProjectEuler\obj\Debug\ProjectEuler.exe
 C:\Users\eweber01\Source\Repos\ProjectEuler\ProjectEuler\obj\Debug\ProjectEuler.pdb
 C:\Users\Ethan Weber\Source\Repos\ProjectEuler\ProjectEuler\bin\Debug\ProjectEuler.exe.config

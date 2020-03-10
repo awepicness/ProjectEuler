@@ -155,6 +155,7 @@
     <Compile Include="Problems\201-300\201-210\Problem203.cs" />
     <Compile Include="Problems\201-300\201-210\Problem206.cs" />
     <Compile Include="Problems\201-300\261-270\Problem263.cs" />
+    <Compile Include="Problems\601-700\681-690\Problem684.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
