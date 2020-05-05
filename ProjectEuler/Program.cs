@@ -29,6 +29,7 @@ namespace ProjectEuler
                 Console.WriteLine("type 'completed' to see which problems I've done which have a solution");
                 Console.WriteLine("type 'unfinished' to see problems I've started but haven't finished");
                 Console.WriteLine("type 'not attempted' to see problems I haven't started");
+                Console.WriteLine("Type 'test' to run the test class");
                 Console.WriteLine("If you type anything else, the program will close");
                 Console.WriteLine();
                 string next = Console.ReadLine();
@@ -50,6 +51,12 @@ namespace ProjectEuler
                     Console.WriteLine("Begone nerd");
                     Console.WriteLine();
                     nerd = true;
+                }
+                else if (next == "test")
+                {
+                    Console.Clear();
+                    RunClass("Test");
+                    Console.WriteLine();
                 }
                 else
                 {
