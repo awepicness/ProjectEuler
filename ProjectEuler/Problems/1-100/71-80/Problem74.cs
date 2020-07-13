@@ -9,8 +9,7 @@ namespace ProjectEuler.Problems
         public void Method()
         {
             Console.WriteLine("How many chains, with a starting number below one million, contain exactly sixty non-repeating terms?");
-            Console.WriteLine("A chain here means a number in which the sum of the factorials of its digits produce numbers that, following the same process," +
-                              " return to the original number");
+            Console.WriteLine("A chain here means a sequence of numbers in which one number produces the next by summing the factorial of each of a given numbers digits.");
 
             // ex: 169 -> 363601 -> 1454 -> 169
 
@@ -22,13 +21,20 @@ namespace ProjectEuler.Problems
             int result = 0;
             for (int i = 1; i <= limit; i++)
             {
-                int n = i;
-                List<int> seq = new List<int>();
+                var seq = new HashSet<int>();
 
+                int n = i;
                 while (!seq.Contains(n))
                 {
                     seq.Add(n);
-                    n = FacSum(n);
+
+                    int facsum = 0;
+                    while (n > 0)
+                    {
+                        facsum += f[n % 10];
+                        n /= 10;
+                    }
+                    n = facsum;
                 }
 
                 if (seq.Count == chainLimit)
@@ -36,19 +42,6 @@ namespace ProjectEuler.Problems
             }
 
             Console.WriteLine($"There are {result} chains of length {chainLimit}");
-        }
-
-        private int FacSum(int n)
-        {
-            int temp = n;
-            int facsum = 0;
-
-            while (temp > 0)
-            {
-                facsum += f[temp % 10];
-                temp /= 10;
-            }
-            return facsum;
         }
     }
 }

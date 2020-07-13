@@ -32,7 +32,7 @@ namespace ProjectEuler
                 Console.WriteLine("Type 'test' to run the test class");
                 Console.WriteLine("If you type anything else, the program will close");
                 Console.WriteLine();
-                string next = Console.ReadLine();
+                string next = Console.ReadLine()?.ToLower();
                 if (next == "completed")
                     ListCompleted();
                 else if (next == "unfinished")
@@ -118,12 +118,11 @@ namespace ProjectEuler
             for (int i = 1; i <= lastProblem; i++)
             {
                 object myclass = GetClassByString(i.ToString());
-                if (myclass != null)
-                    if (myclass.GetType().GetMethod("Method") == null)
-                    {
-                        Console.Write($"{i}, ");
-                        count++;
-                    }
+                if (myclass?.GetType().GetMethod("Method") == null)
+                {
+                    Console.Write($"{i}, ");
+                    count++;
+                }
             }
 
             Console.WriteLine();
@@ -184,22 +183,20 @@ namespace ProjectEuler
                 sw.Stop();
                 Console.WriteLine($"Time elapsed: {sw.ElapsedMilliseconds} ms");
                 Console.WriteLine("---------------------------------------");
-                Console.WriteLine();
             }
             else
             {
                 Console.WriteLine("problem not attempted");
-                Console.WriteLine();
             }
+            Console.WriteLine();
         }
 
-        private static readonly Assembly assembly = Assembly.GetExecutingAssembly();
         private static object GetClassByString(string classNumber)
         {
             Type type;
             try
             {
-                type = assembly.GetTypes().First(c => c.Name == $"Problem{classNumber}");
+                type = Assembly.GetExecutingAssembly().GetTypes().First(c => c.Name == $"Problem{classNumber}");
             }
             catch (InvalidOperationException)
             {
