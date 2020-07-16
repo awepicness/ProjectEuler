@@ -13,6 +13,16 @@ namespace ProjectEuler.Problems
                               "is represented by a different number in the set, and the last 2 digits of each number " +
                               "matches the first 2 digits of the next number (including the last and the first numbers)\n");
 
+            Dictionary<char, string> fullName = new Dictionary<char, string>
+            {
+                {'O', "Octagonal"},
+                {'X', "Hexagonal"},
+                {'T', "Triangular"},
+                {'H', "Heptagonal"},
+                {'S', "Square"},
+                {'P', "Pentagonal"}
+            };
+            
             HashSet<Tuple<string, char>> figurates = BuildFigurates();
             foreach (var a in figurates)
             {
@@ -49,7 +59,7 @@ namespace ProjectEuler.Problems
 
                                     List<Tuple<string, char>> matches = new List<Tuple<string, char>>{a, b, c, d, e, f};
                                     foreach(var m in matches)
-                                        Console.WriteLine($"{m.Item1} : {getCharString(m.Item2)}");
+                                        Console.WriteLine($"{m.Item1} : {fullName[m.Item2]}");
                                     Console.WriteLine($"sum: {sum}");
                                     return;
                                 }
@@ -60,27 +70,11 @@ namespace ProjectEuler.Problems
             }
         }
 
-        private string getCharString(char c)
-        {
-            switch (c)
-            {
-                case 'O': return "Octagonal";
-                case 'X': return "Hexagonal";
-                case 'T': return "Triangular";
-                case 'H': return "Heptagonal";
-                case 'S': return "Square";
-                case 'P': return "Pentagonal";
-            }
-
-            return "";
-        }
-
         private string getSub(Tuple<string, char> val) => val.Item1.Substring(2);
 
         private List<Tuple<string, char>> getMatches(HashSet<Tuple<string, char>> figurates, Tuple<string, char> val, List<char> invalids)
-        {
-            return figurates.Where(t => t.Item1.Substring(0, 2) == getSub(val) && !invalids.Contains(t.Item2)).ToList();
-        }
+            => figurates.Where(t => t.Item1.Substring(0, 2) == getSub(val) && !invalids.Contains(t.Item2)).ToList();
+        
 
         private HashSet<Tuple<string, char>> BuildFigurates()
         {

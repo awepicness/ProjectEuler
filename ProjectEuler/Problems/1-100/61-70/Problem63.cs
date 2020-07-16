@@ -16,14 +16,8 @@ namespace ProjectEuler.Problems
             int count = 0;
             for (int i = 1; i < 25; i++)
                 for (int j = 1; j < 25; j++)
-                {
-                    BigInteger pow = BigInteger.Pow(i, j);
-                    int digitCount = 0;
-                    foreach (char _ in pow.ToString())
-                        digitCount++;
-                    if (digitCount == j)
+                    if (BigInteger.Pow(i, j).ToString().Length == j)
                         count++;
-                }
             
             Console.WriteLine($"There are {count} numbers");
         }
