@@ -25,7 +25,7 @@ namespace ProjectEuler.Problems
 
             const int familySize = 8;
 
-            int[] primes = HelperMethods.ESieve(10000, 1000000);
+            int[] primes = HelperMethods.ESieve(10_000, 1_000_000);
 
             HashSet<int> invalids = new HashSet<int>();
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ProjectEuler.Problems
 {
@@ -20,45 +21,29 @@ namespace ProjectEuler.Problems
 
                 i++;
 
-                HashSet<int> iDigits = new HashSet<int>();
-                foreach (char c in i.ToString())
-                    iDigits.Add(c - '0');
+                HashSet<int> iDigits = buildDigits(i, 1);
 
-                HashSet<int> i2Digits = new HashSet<int>();
-                foreach (char c in (2 * i).ToString())
-                    i2Digits.Add(c - '0');
+                HashSet<int> i2Digits = buildDigits(i, 2);
 
                 if (!iDigits.SetEquals(i2Digits))
                     continue;
 
-                HashSet<int> i3Digits = new HashSet<int>();
-
-                foreach (char c in (3 * i).ToString())
-                    i3Digits.Add(c - '0');
+                HashSet<int> i3Digits = buildDigits(i, 3);
 
                 if (!iDigits.SetEquals(i3Digits))
                     continue;
 
-                HashSet<int> i4Digits = new HashSet<int>();
-
-                foreach (char c in (4 * i).ToString())
-                    i4Digits.Add(c - '0');
+                HashSet<int> i4Digits = buildDigits(i, 4);
 
                 if (!iDigits.SetEquals(i4Digits))
                     continue;
 
-                HashSet<int> i5Digits = new HashSet<int>();
-
-                foreach (char c in (5 * i).ToString())
-                    i5Digits.Add(c - '0');
+                HashSet<int> i5Digits = buildDigits(i, 5);
 
                 if (!iDigits.SetEquals(i5Digits))
                     continue;
 
-                HashSet<int> i6Digits = new HashSet<int>();
-
-                foreach (char c in (6 * i).ToString())
-                    i6Digits.Add(c - '0');
+                HashSet<int> i6Digits = buildDigits(i, 6);
 
                 if (!iDigits.SetEquals(i6Digits))
                     continue;
@@ -67,5 +52,7 @@ namespace ProjectEuler.Problems
 
             Console.WriteLine($"{i} * 2, 3, 4, 5, and 6 all have the same digits as {i}");
         }
+
+        private HashSet<int> buildDigits(int num, int mult) => (num * mult).ToString().Select(c => c - '0').ToHashSet();
     }
 }

@@ -24,7 +24,7 @@ namespace ProjectEuler.Problems
             // find smallest cube for which 4 other cubes share the same string representation
             // this works because permutations have the same string representation
             int j = 0;
-            string key = cubeStrings.GroupBy(s => s) // group cube by their converted string representation
+            string key = cubeStrings.GroupBy(s => s) // group cubes by their converted string representation
                                     .FirstOrDefault(g => g.Count() == permutationMatches) // find the first one where the number of entries matches the expected permutation count
                                     ?.Key; // retrieve the converted string representation
             bool found = !string.IsNullOrWhiteSpace(key);
