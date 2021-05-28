@@ -17,3 +17,4 @@ C:\Users\Ethan Weber\Source\Repos\ProjectEuler\ProjectEuler\obj\Debug\ProjectEul
 C:\Users\Ethan Weber\Source\Repos\ProjectEuler\ProjectEuler\obj\Debug\ProjectEuler.csproj.CoreCompileInputs.cache
 C:\Users\Ethan Weber\Source\Repos\ProjectEuler\ProjectEuler\obj\Debug\ProjectEuler.exe
 C:\Users\Ethan Weber\Source\Repos\ProjectEuler\ProjectEuler\obj\Debug\ProjectEuler.pdb
+C:\Users\eweber01\Source\Repos\ProjectEuler\ProjectEuler\obj\Debug\ProjectEuler.csprojAssemblyReference.cache

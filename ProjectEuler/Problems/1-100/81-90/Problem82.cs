@@ -12,6 +12,8 @@ namespace ProjectEuler.Problems
             Console.WriteLine("Find the minimal path sum in the provided file containing an 80x80 matrix from any number in the left column " +
                               "to any number in the right column by moving right, up, and down");
 
+            // thanks mathblog.dk yet again
+
             const string filename = "82matrix.txt";
 
             const int n = 80;

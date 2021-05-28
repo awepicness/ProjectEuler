@@ -82,7 +82,7 @@ namespace ProjectEuler
                     for (int j = i * 2 * (i + 1); j <= sieveBound; j += 2 * i + 1)
                         PrimeBits.Set(j, false);
 
-            List<int> numbers = new List<int>((int)(upperLimit / (Math.Log(upperLimit) - 1.08366)));
+            List<int> numbers = new List<int>(Math.Max((int)(upperLimit / (Math.Log(upperLimit) - 1.08366)), 2));
 
             if (lowerLimit < 3)
             {
@@ -154,7 +154,7 @@ namespace ProjectEuler
         {
             if (n < 1)
                 return new[] { 0 };
-            List<int> divisors = new List<int> {1};
+            List<int> divisors = new List<int> {1, n};
             for(int i = 2; i <= Math.Sqrt(n); i++)
                 if (n % i == 0)
                 {

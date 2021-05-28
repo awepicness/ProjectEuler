@@ -173,7 +173,9 @@
     <Compile Include="Problems\201-300\201-210\Problem203.cs" />
     <Compile Include="Problems\201-300\201-210\Problem206.cs" />
     <Compile Include="Problems\201-300\261-270\Problem263.cs" />
+    <Compile Include="Problems\301-400\351-360\Problem357.cs" />
     <Compile Include="Problems\601-700\681-690\Problem684.cs" />
+    <Compile Include="Problems\701-800\751-760\Problem757.cs" />
     <Compile Include="ProblemTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -202,5 +204,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
