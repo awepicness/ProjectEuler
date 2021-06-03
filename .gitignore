@@ -4,3 +4,9 @@
 
 /.vs/ProjectEuler/v16/Server/sqlite3
 /.vs/ProjectEuler/v16/.suo
+ProjectEuler/bin/Debug/ProjectEuler.exe
+ProjectEuler/bin/Debug/ProjectEuler.pdb
+ProjectEuler/obj/Debug/ProjectEuler.csprojAssemblyReference.cache
+ProjectEuler/obj/Debug/ProjectEuler.exe
+ProjectEuler/obj/Debug/ProjectEuler.pdb
+ProjectEuler/ProjectEuler.csproj.user
