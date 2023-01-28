@@ -2,13 +2,9 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/ProjectEuler/v16/Server/sqlite3
-/.vs/ProjectEuler/v16/.suo
-ProjectEuler/bin/Debug/ProjectEuler.exe
-ProjectEuler/bin/Debug/ProjectEuler.pdb
-ProjectEuler/obj/Debug/ProjectEuler.csprojAssemblyReference.cache
-ProjectEuler/obj/Debug/ProjectEuler.exe
-ProjectEuler/obj/Debug/ProjectEuler.pdb
+/.vs
+ProjectEuler/bin
+ProjectEuler/obj
 ProjectEuler/ProjectEuler.csproj.user
 /.vs/ProjectEuler/FileContentIndex
 /.vs/ProjectEuler/v17
